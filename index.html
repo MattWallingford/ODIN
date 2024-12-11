@@ -455,11 +455,12 @@
             });
         });
 
-        // Automatically select the first image when the page loads
+        // Automatically select the middle image when the page loads
         window.onload = function() {
-            const firstImage = document.querySelector('.gallery-image');
-            if (firstImage) {
-                firstImage.click();
+            const images = document.querySelectorAll('.gallery-image');
+            if (images.length > 1) {
+                // Index 1 is the middle image (0-based indexing, and we have 3 images)
+                images[1].click();
             }
         };
     </script>
