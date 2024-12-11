@@ -25,14 +25,18 @@
             background-color: #333;
             color: #fff;
             padding: 10px 20px;
+            flex-wrap: wrap;
         }
 
-        header h1, header nav {
+        header h1 {
             margin-right: 20px;
+            font-size: 1.5em;
         }
 
         header nav {
             font-size: 1em;
+            flex-grow: 1;
+            text-align: right;
         }
 
         header nav a {
@@ -45,22 +49,48 @@
             text-decoration: underline;
         }
 
-        .odin-description {
-            margin: 20px 10%;
+        .title-section {
+            padding: 20px;
             text-align: center;
-            font-size: 1.2em;
-            color: #333;
-            line-height: 1.8;
+        }
+
+        .title-section h1 {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .authors {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .authors span {
+            font-size: 1em;
+            color: #007BFF;
+            cursor: pointer;
+        }
+
+        .authors span:hover {
+            text-decoration: underline;
+        }
+
+        .affiliations {
+            font-size: 0.9em;
+            color: #555;
         }
 
         .container {
             width: 90%;
             max-width: 1200px;
-            margin: 40px auto;
+            margin: 20px auto;
         }
 
         .source-generated-section {
-            margin-bottom: 60px;
+            margin-bottom: 40px;
         }
 
         .labels {
@@ -69,7 +99,7 @@
         }
 
         .labels h2 {
-            font-size: 1.6em;
+            font-size: 1.4em;
             color: #333;
         }
 
@@ -77,15 +107,20 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
             flex-wrap: wrap;
         }
 
+        .source-image-container {
+            text-align: center;
+            margin: 10px;
+        }
+
         .source-image-container img {
-            width: 300px;
+            width: 80%;
+            max-width: 300px;
             height: auto;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .arrow {
@@ -94,84 +129,75 @@
             border-top: 20px solid transparent;
             border-bottom: 20px solid transparent;
             border-left: 30px solid #333;
-            margin: 0 20px;
+            margin: 10px 0;
         }
 
         .generated-video-container {
-            position: relative;
-            width: 400px; /* Set width of the video */
-            padding-top: 400px; /* Set height to match width for square */
-            overflow: hidden;
-            border-radius: 8px;
-            background-color: #000;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            margin: 10px;
         }
 
         .generated-video-container video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            width: 80%;
+            max-width: 400px;
+            height: auto;
             border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .video-grid {
-            display: flex; /* Use flexbox instead of grid */
-            justify-content: center; /* Center the movies */
-            gap: 30px; /* Set the spacing between the videos */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
             margin-top: 20px;
         }
-    
+
         .video-container {
-            position: relative;
-            width: 400px;
-            padding-top: 400px; /* Maintain square aspect ratio */
-            overflow: hidden;
-            border-radius: 8px;
-            background-color: #000;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
-    
+
         .video-container video {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 6px;
+            max-width: 400px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .image-gallery {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
+            gap: 80px;
+        }
+
+        .gallery-item {
+            text-align: center;
+            width: 100px;
         }
 
         .gallery-image {
-            width: 200px;
-            height: 200px;
+            width: 150%;
+            max-width: 200px;
+            height: auto;
             object-fit: cover;
             border-radius: 8px;
             cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        .gallery-image:hover {
-            transform: scale(1.05);
-        }
-
-        .hidden {
-            display: none;
+        /* Selected state for persistent enlargement and shadow */
+        .gallery-image.selected {
+            transform: scale(1.25);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.3);
+            outline: none;
         }
 
         .footer {
             margin-top: 40px;
             text-align: center;
-            font-size: 1em;
+            font-size: 0.9em;
             color: #555;
         }
 
@@ -182,6 +208,102 @@
 
         .footer a:hover {
             text-decoration: underline;
+        }
+
+        .abstract-section {
+            margin: 20px auto;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .abstract-section h2 {
+            font-size: 1.6em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .abstract-section p {
+            max-width: 100%;
+            margin: 0 auto;
+            text-align: justify;
+            font-size: 1em;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .action-buttons {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .action-buttons a {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #333;
+            border-radius: 20px;
+            text-decoration: none;
+        }
+
+        .action-buttons a:hover {
+            background-color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .title-section h1 {
+                font-size: 1.6em;
+            }
+
+            .authors span {
+                font-size: 0.9em;
+            }
+
+            .affiliations {
+                font-size: 0.8em;
+            }
+
+            .source-arrow-video {
+                flex-direction: column;
+            }
+
+            .arrow {
+                display: none;
+            }
+
+            .action-buttons a {
+                font-size: 0.9em;
+                padding: 8px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title-section h1 {
+                font-size: 1.4em;
+            }
+
+            .authors span {
+                font-size: 0.8em;
+            }
+
+            .affiliations {
+                font-size: 0.75em;
+            }
+
+            .gallery-item {
+                width: 100%;
+            }
+
+            .abstract-section p {
+                font-size: 0.9em;
+                text-align: justify;
+            }
+        }
+
+        /* Hide the video grid initially */
+        .hidden {
+            display: none;
         }
     </style>
 </head>
@@ -194,9 +316,29 @@
         </nav>
     </header>
 
-    <!-- ODIN Description -->
-    <div class="odin-description">
-        <strong>ODIN</strong> generates immersive, real-world scenes from a single image. Trained on over 1 million 360-degree videos, ODIN enables new capabilities in 3D scene generation.
+    <!-- Title Section -->
+    <div class="title-section">
+        <h1>From an Image to a Scene: Learning to Imagine the World from a Million 360° Videos</h1>
+        <div class="authors">
+            <span>Matthew Wallingford</span>
+            <span>Anand Bhattad</span>
+            <span>Aditya Kusupati</span>
+            <span>Vivek Ramanujan</span>
+            <span>Matt Deitke</span>
+            <span>Sham Kakade</span>
+            <span>Aniruddha Kembhavi</span>
+            <span>Roozbeh Mottaghi</span>
+            <span>Wei-Chiu Ma</span>
+            <span>Ali Farhadi</span>
+        </div>
+        <div class="affiliations">
+            University of Washington, Toyota Technological Institute at Chicago,<br>
+            Harvard University, Allen Institute for AI, Cornell University
+        </div>
+        <div class="action-buttons">
+            <a href="https://arxiv.org/abs/2412.07770" target="_blank">arXiv</a>
+            <a href="https://huggingface.co/datasets/mwallingford/360-1M/tree/main" target="_blank">Data</a>
+        </div>
     </div>
 
     <div class="container">
@@ -208,7 +350,7 @@
             </div>
             <div class="source-arrow-video">
                 <div class="source-image-container">
-                    <img src="nyc.jpg" alt="Lighthouse Source Image">
+                    <img src="nyc.jpg" alt="Input Image">
                 </div>
                 <div class="arrow"></div>
                 <div class="generated-video-container">
@@ -222,12 +364,18 @@
 
         <!-- Image Gallery Section -->
         <div class="labels">
-            <h2>Choose a Scene to Explore</h2>
+            <h2>Choose a Generated Scene to View</h2>
         </div>
         <div class="image-gallery">
-            <img src="hobbit_home.jpg" alt="Gallery Image 3" data-videos="hobbit1.mov,hobbit4.mov" class="gallery-image">
-            <img src="livingroom.jpg" alt="Gallery Image 1" data-videos="living_room_zoom.mov,living_room2.mov" class="gallery-image">
-            <img src="picnic.png" alt="Gallery Image 2" data-videos="picnic2.mov,picnic1.mov" class="gallery-image">
+            <div class="gallery-item">
+                <img src="hobbit_home.jpg" alt="Gallery Image 3" data-videos="hobbit1.mov,hobbit4.mov" class="gallery-image">
+            </div>
+            <div class="gallery-item">
+                <img src="livingroom.jpg" alt="Gallery Image 1" data-videos="living_room_zoom.mov,living_room2.mov" class="gallery-image">
+            </div>
+            <div class="gallery-item">
+                <img src="picnic.png" alt="Gallery Image 2" data-videos="picnic2.mov,picnic1.mov" class="gallery-image">
+            </div>
         </div>
 
         <!-- Video Grid -->
@@ -244,6 +392,32 @@
             </div>
         </div>
 
+        <!-- Abstract Section -->
+        <div class="abstract-section">
+            <h2>Abstract</h2>
+            <p>
+                Three-dimensional (3D) understanding of objects and scenes play a key role in
+                humans’ ability to interact with the world and has been an active area of research in
+                computer vision, graphics, and robotics. Large scale synthetic and object-centric 3D
+                datasets have shown to be effective in training models that have 3D understanding
+                of objects. However, applying a similar approach to real-world objects and scenes
+                is difficult due to a lack of large-scale data. Videos are a potential source for real-
+                world 3D data, but finding diverse yet corresponding views of the same content
+                has shown to be difficult at scale. Furthermore, standard videos come with fixed
+                viewpoints, determined at the time of capture. This restricts the ability to access
+                scenes from a variety of more diverse and potentially useful perspectives. We argue
+                that large scale 360° videos can address these limitations to provide scalable
+                corresponding frames from diverse views. In this paper, we introduce 360-1M,
+                a 360° video dataset, and a process for efficiently finding corresponding frames
+                from diverse viewpoints at scale. We train our diffusion-based model, ODIN, on
+                360-1M. Empowered by the largest real-world, multi-view dataset to date, ODIN is
+                able to freely generate novel views of real-world scenes. Unlike previous methods,
+                ODIN can move the camera through the environment, enabling the model to infer
+                the geometry and layout of the scene. Additionally, we show improved performance
+                on standard novel view synthesis and 3D reconstruction benchmarks.
+            </p>
+        </div>
+
         <!-- Footer -->
         <div class="footer">
             <p>
@@ -255,7 +429,8 @@
 
     <script>
         // Handle gallery image clicks
-        document.querySelectorAll('.gallery-image').forEach(function(image) {
+        const galleryImages = document.querySelectorAll('.gallery-image');
+        galleryImages.forEach(function(image) {
             image.addEventListener('click', function() {
                 const videoGrid = document.getElementById('video-grid');
                 const videoSources = this.getAttribute('data-videos').split(',');
@@ -271,6 +446,12 @@
 
                 // Show the video grid
                 videoGrid.classList.remove('hidden');
+
+                // Remove 'selected' class from all gallery images
+                galleryImages.forEach(img => img.classList.remove('selected'));
+
+                // Add 'selected' class to the clicked image
+                this.classList.add('selected');
             });
         });
 
