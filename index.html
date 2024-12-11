@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From an Image to a Scene: Learning to Imagine the World from a Million 360° Videos</title>
+    <style>
+        /* Reset default browser margins and paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+        }
+
+        header h1, header nav {
+            margin-right: 20px;
+        }
+
+        header nav {
+            font-size: 1em;
+        }
+
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+
+        header nav a:hover {
+            text-decoration: underline;
+        }
+
+        .odin-description {
+            margin: 20px 10%;
+            text-align: center;
+            font-size: 1.2em;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        .source-generated-section {
+            margin-bottom: 60px;
+        }
+
+        .labels {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .labels h2 {
+            font-size: 1.6em;
+            color: #333;
+        }
+
+        .source-arrow-video {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .source-image-container img {
+            width: 300px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .arrow {
+            width: 0; 
+            height: 0; 
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+            border-left: 30px solid #333;
+            margin: 0 20px;
+        }
+
+        .generated-video-container {
+            position: relative;
+            width: 400px; /* Set width of the video */
+            padding-top: 400px; /* Set height to match width for square */
+            overflow: hidden;
+            border-radius: 8px;
+            background-color: #000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .generated-video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .video-grid {
+            display: flex; /* Use flexbox instead of grid */
+            justify-content: center; /* Center the movies */
+            gap: 30px; /* Set the spacing between the videos */
+            margin-top: 20px;
+        }
+    
+        .video-container {
+            position: relative;
+            width: 400px;
+            padding-top: 400px; /* Maintain square aspect ratio */
+            overflow: hidden;
+            border-radius: 8px;
+            background-color: #000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .gallery-image {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .gallery-image:hover {
+            transform: scale(1.05);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 1em;
+            color: #555;
+        }
+
+        .footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>ODIN</h1>
+        <nav>
+            <a href="https://huggingface.co/datasets/mwallingford/360-1M/tree/main" target="_blank">Dataset</a>
+        </nav>
+    </header>
+
+    <!-- ODIN Description -->
+    <div class="odin-description">
+        <strong>ODIN</strong> generates immersive, real-world scenes from a single image. Trained on over 1 million 360-degree videos, ODIN enables new capabilities in 3D scene generation.
+    </div>
+
+    <div class="container">
+
+        <!-- Source Image and Generated Scene Section -->
+        <div class="source-generated-section">
+            <div class="labels">
+                <h2>Generate a 3D Scene from a Single Image</h2>
+            </div>
+            <div class="source-arrow-video">
+                <div class="source-image-container">
+                    <img src="nyc.jpg" alt="Lighthouse Source Image">
+                </div>
+                <div class="arrow"></div>
+                <div class="generated-video-container">
+                    <video autoplay playsinline loop muted>
+                        <source src="nyc4.mov" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image Gallery Section -->
+        <div class="labels">
+            <h2>Choose a Scene to Explore</h2>
+        </div>
+        <div class="image-gallery">
+            <img src="hobbit_home.jpg" alt="Gallery Image 3" data-videos="hobbit1.mov,hobbit4.mov" class="gallery-image">
+            <img src="livingroom.jpg" alt="Gallery Image 1" data-videos="living_room_zoom.mov,living_room2.mov" class="gallery-image">
+            <img src="lighthouse.webp" alt="Gallery Image 2" data-videos="lighthouse2.mp4,lighthouse3.mp4" class="gallery-image">
+        </div>
+
+        <!-- Video Grid -->
+        <div id="video-grid" class="video-grid hidden">
+            <div class="video-container">
+                <video autoplay playsinline loop muted>
+                    <source src="" type="video/mp4">
+                </video>
+            </div>
+            <div class="video-container">
+                <video autoplay playsinline loop muted>
+                    <source src="" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>
+                Learn more about <a href="https://arxiv.org/abs/2412.07770" target="_blank">ODIN</a> and check out the <a href="https://huggingface.co/datasets/mwallingford/360-1m/tree/main" target="_blank">360-1M</a> dataset.
+            </p>
+        </div>
+
+    </div>
+
+    <script>
+        // Handle gallery image clicks
+        document.querySelectorAll('.gallery-image').forEach(function(image) {
+            image.addEventListener('click', function() {
+                const videoGrid = document.getElementById('video-grid');
+                const videoSources = this.getAttribute('data-videos').split(',');
+                const videoContainers = videoGrid.querySelectorAll('.video-container video');
+
+                // Update video sources
+                videoSources.forEach((src, index) => {
+                    if (videoContainers[index]) {
+                        videoContainers[index].querySelector('source').src = src;
+                        videoContainers[index].load();
+                    }
+                });
+
+                // Show the video grid
+                videoGrid.classList.remove('hidden');
+            });
+        });
+
+        // Automatically select the first image when the page loads
+        window.onload = function() {
+            const firstImage = document.querySelector('.gallery-image');
+            if (firstImage) {
+                firstImage.click();
+            }
+        };
+    </script>
+
+</body>
+</html>
